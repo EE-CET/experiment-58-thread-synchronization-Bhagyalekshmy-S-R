@@ -1,15 +1,12 @@
 class Table {
-    // synchronized method
     synchronized void printTable(int n) {
         for (int i = 1; i <= 5; i++) {
-            System.out.print(n * i + " ");
-            try {
-                Thread.sleep(400); // delay to show synchronization
-            } catch (InterruptedException e) {
-                System.out.println(e);
+            System.out.print(n * i);
+            if (i < 5) {
+                System.out.print(" ");
             }
         }
-        System.out.println(); // move to next line after table
+        System.out.println();
     }
 }
 
@@ -39,12 +36,14 @@ class MyThread2 extends Thread {
 
 public class SynchronizationDemo {
     public static void main(String[] args) {
-        Table obj = new Table();
+        Table table = new Table();
 
-        MyThread1 t1 = new MyThread1(obj);
-        MyThread2 t2 = new MyThread2(obj);
+        MyThread1 t1 = new MyThread1(table);
+        MyThread2 t2 = new MyThread2(table);
 
         t1.start();
         t2.start();
     }
 }
+
+
