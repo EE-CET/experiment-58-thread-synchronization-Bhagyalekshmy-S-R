@@ -42,8 +42,15 @@ public class SynchronizationDemo {
         MyThread2 t2 = new MyThread2(table);
 
         t1.start();
+        try {
+            t1.join();   //  wait until table of 5 finishes
+        } catch (InterruptedException e) {
+            // do nothing
+        }
+
         t2.start();
     }
 }
+
 
 
