@@ -34,23 +34,14 @@ class MyThread2 extends Thread {
     }
 }
 
-public class SynchronizationDemo {
+public class Solution {
     public static void main(String[] args) {
-        Table table = new Table();
+        Table obj = new Table();
 
-        MyThread1 t1 = new MyThread1(table);
-        MyThread2 t2 = new MyThread2(table);
+        MyThread1 t1 = new MyThread1(obj);
+        MyThread2 t2 = new MyThread2(obj);
 
         t1.start();
-        try {
-            t1.join();   //  wait until table of 5 finishes
-        } catch (InterruptedException e) {
-            // do nothing
-        }
-
         t2.start();
     }
 }
-
-
-
